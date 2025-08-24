@@ -9,6 +9,7 @@ const Doctors = () =>
     const { speciality } = useParams()
 
     const [filterDoc,setFilterDoc] = useState([])//to make changes like selecting and putting things in a box
+    const [showFilter,setShowFilter] = useState(false)
     const navigate = useNavigate()//for moving to different page
 
     const {Doctors} = useContext(AppContext)// from the appcontext..we require the information about doctors only
@@ -35,7 +36,8 @@ const Doctors = () =>
     <div>
         <p className='text-gray-600'>Navigate through all the specialist doctors</p>
         <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
-            <div className='flex flex-col gap-4 text-sm text-gray-600 '> 
+            <button className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white' : ''}`} onClick={()=>setShowFilter(prev=> !prev)}>Fliters</button>
+            <div className={` flex-col gap-4 text-sm text-gray-600 ${showFilter ? 'flex' : 'hidden sm:flex'}`}> 
             
                 <p onClick={()=>speciality === 'GENERAL PHYSICIAN ' ? navigate('/doctors') : navigate('/doctors/General physician')} className={`w-[94vw sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "General physician" ? "bg-indigo-300 text-black" : ""} `}>GENERAL PHYSICIAN</p>
                 <p onClick={()=>speciality === 'GYNECOLOGIST' ? navigate('/doctors') : navigate('/doctors/Gynecologist')} className={`w-[94vw sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Gynecologist" ? "bg-indigo-300 text-black" : ""} `}>GYNECOLOGIST</p>
