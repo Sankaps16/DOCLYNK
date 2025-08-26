@@ -7,10 +7,21 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# Environment files
+.env
+backend/.env
+frontend/.env
+
+# Dependency directories
 node_modules/
-dist
-dist-ssr
+backend/node_modules/
+frontend/node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+frontend/build/
 *.local
 
 # Editor directories and files
@@ -23,3 +34,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OS specific
+Thumbs.db
+
