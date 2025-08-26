@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const connectDB = async () => {
-    mongoose.connection.on('connected', ()=> console.log("Database connected"))
-    
-
-}
-
-
   try {
-    await mongoose.connect(`${process.env.MONGODB_URL}/doclynk`);
+    await mongoose.connect(process.env.MONGODB_URL);
+    console.log("✅ Database connected");
   } catch (error) {
-    console.error("Database connection failed:", error.message);
+    console.error("❌ Database connection failed:", error.message);
     process.exit(1);
   }
 };
-export default connectDB
+
+export default connectDB;
+
