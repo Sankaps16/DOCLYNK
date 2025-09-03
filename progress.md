@@ -1,27 +1,9 @@
-27/08/2025 update:
-Admin / Doctor Backend Feature
-
-Controller (addDoctor)
-Handles form data from req.body.
-Handles file upload via req.file.
-Added try/catch for errors.
-
-Middleware (multer)
-Configured diskStorage to save files with original names.
-Exported upload middleware for routes.
-Routes (adminRouter)
-POST /add-doctor route with:
-upload.single('image') → parses file before controller.
-addDoctor → handles data + file.
-Exported router for server.js.
-
-Server
-Mounted router: app.use('/api/admin', adminRouter).
-Enabled JSON and URL-encoded parsing.
-
-Concepts Covered
-Controllers = handle logic.
-Middleware = process request before controller.
-Multer = file upload parsing.
-Routing = Router.post() + URL prefix.
-
+03/09/2025 update:
+- Learned backend validation in Express.js (`if(!name || !email || ...)`).
+- Understood `res.json()` and the role of `res` vs `req`.
+- Explored bcrypt:
+  - `genSalt(10)` and `hash(password, salt)`.
+  - Why salt makes hashes unique.
+- Understood `await` and async flow.
+- Learned hashing basics and its use in password storage.
+- Clarified difference: **Hashing (one-way)** vs **Encryption (two-way)**
