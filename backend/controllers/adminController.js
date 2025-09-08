@@ -1,5 +1,7 @@
 import validator from 'validator'
 import bcrypt from 'bcrypt'
+import {v2 as cloudinary} from "cloudinary"
+import doctorModel from "../models/doctorModel.js"
 //API for adding doctor 
 const addDoctor = async(req,res) =>{ 
     try{ 
@@ -29,10 +31,35 @@ const addDoctor = async(req,res) =>{
         const salt =await bcrypt.getSalt(10)//greater no. menaing more secure but slow
         const hashedPassword = await bcrypt.hash(password,salt)
         //upload image to cloudinary
+        const imageUpload = await cloudinary.uploader.upload(imageFile.path,{resource_type:"image"})
+        const imageUrl = imageUpload.secure_url
+
+        const doctorData = {
+            name,
+            email,
+            image:imageUrl,
+            password:hashedPassword,
+            speciality,
+            degree,
+            experience,
+            about,
+            fees,
+            address:JSON.parse(address),//it would store this data as object not as string
+            date:Date.now()
+
+        }
+
+        const newDoctor = new doctorModel(doctorData)
+        await newDoctor.save()
+
+        res.json({success:true,message:"Doctor Added"})
+        
         
 
         }
 catch(error){ 
+    console.log(error)
+    res.json({success:false,message:error.message})
 
 } } 
 export {addDoctor}
