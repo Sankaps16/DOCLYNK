@@ -1,9 +1,12 @@
-03/09/2025 update:
-- Learned backend validation in Express.js (`if(!name || !email || ...)`).
-- Understood `res.json()` and the role of `res` vs `req`.
-- Explored bcrypt:
-  - `genSalt(10)` and `hash(password, salt)`.
-  - Why salt makes hashes unique.
-- Understood `await` and async flow.
-- Learned hashing basics and its use in password storage.
-- Clarified difference: **Hashing (one-way)** vs **Encryption (two-way)**
+16/09/2025 update:
+Implemented Admin Authentication system.
+
+Created a middleware authAdmin to restrict access.
+
+Used JWT tokens for secure authentication.
+
+Configured .env with ADMIN_EMAIL, ADMIN_PASSWORD, and JWT_SECRET.
+
+Tested an API endpoint → only authorized admin can add a new doctor.
+
+Verified that unauthorized requests are blocked.
