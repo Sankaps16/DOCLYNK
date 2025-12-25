@@ -7,17 +7,15 @@ import AdminContextProvider from './context/AdminContext.jsx'
 import DoctorContextProvider from './context/DoctorContext.jsx'
 import AppContextProvider from './context/AppContext.jsx'
 
+//where should react put this app
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
   <AdminContextProvider>
     <DoctorContextProvider>
       <AppContextProvider>
         <App />
-
       </AppContextProvider>
     </DoctorContextProvider>
   </AdminContextProvider>
-
-    
   </BrowserRouter>,
 )
