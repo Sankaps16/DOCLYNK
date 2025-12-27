@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import {assets} from '../assets/assets'
 import { AdminContext } from '../context/AdminContext'
+import axios from 'axios'
 const Login = () => {
 //we can change the state
   const [state,setState] = useState('Admin')
@@ -14,6 +15,11 @@ const Login = () => {
 
     try {
       if(state === 'Admin'){
+        const {data} = await axios.post(backendUrl + '/api/admin/login', {email,password})
+        if(data.success) {
+          localStorage.setItem('aToken',data.token)//user stays logged in even after refresh
+          setAToken(data.token)
+        }
 
       }else{
         
@@ -33,11 +39,11 @@ const Login = () => {
       <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-[#5E5E5E] text-sm shadow-lg'>
         <p className='text-2xl font-semibold m-auto'><span className='text-primary'>{state}</span> Login</p>
         <div className='w-full'><p>Email</p>
-        <input onClick={(e)=>setEmail(e.target.value)} value={email} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="email" required />
+        <input onChange={(e)=>setEmail(e.target.value)} value={email} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="email" required />
         </div>
 
         <div className='w-full'><p>Password</p>
-        <input onClick={(e)=>setPassword(e.target.value)} value={password} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="password" required />
+        <input onChange={(e)=>setPassword(e.target.value)} value={password} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="password" required />
         </div>
         <button className='bg-primary text-white w-full py-2 rounded-md text-base '>Login</button>
         {
