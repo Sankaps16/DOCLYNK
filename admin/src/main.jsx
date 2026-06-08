@@ -9,7 +9,7 @@ import AppContextProvider from './context/AppContext.jsx'
 
 //where should react put this app
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  <BrowserRouter> //main router component that enables URL-based navigation in a React application and allows page changes without reloading the browser.
   <AdminContextProvider>
     <DoctorContextProvider>
       <AppContextProvider>
