@@ -45,6 +45,7 @@ const AddDoctor = () => {
                             <option value="10 Year">10 Year</option>
                             
                         </select>
+                        {/* select tag is used for drop down selection */}
                     </div>
 
                 </div>
