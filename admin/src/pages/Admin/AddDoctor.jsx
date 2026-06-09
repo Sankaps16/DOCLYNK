@@ -9,6 +9,7 @@ const AddDoctor = () => {
         <div>
             <div>
                 <label htmlFor="doc-img">
+                    {/* label tag:to make text description of checkbox clickable */}
                     <img src={assets.upload_area} alt="" />
                 </label>
                 <input type="file"  id="doc-img" hidden/>
