@@ -21,7 +21,7 @@ const Login = () => {
           localStorage.setItem('aToken',data.token)//user stays logged in even after refresh
           setAToken(data.token)
         }else{
-          toast.error(data.message)
+          toast.error(data.message)//it displays a notification for the error entries
         }
 
       }else{
